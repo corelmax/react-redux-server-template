@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import { Router, Route, Switch } from 'react-router'
+import { connect } from 'react-redux'
 import classNames from 'classnames/bind'
-import styles from './App.scss';
+import styles from './App.scss'
+
+import Home from './Home'
+import Test from './Test'
 
 const cx = classNames.bind(styles)
 
@@ -11,12 +16,20 @@ class App extends Component {
         <header className={cx("App-header")}>
           <h1 className={cx("App-title")}>Welcome to React</h1>
         </header>
-        <p className={cx("App-intro")}>
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className={cx('article-main-container')}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/test" component={Test} />
+            </Switch>
+        </div>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(
+  state => state,
+  dispatch => ({
+    dispatch: dispatch
+  })
+)(App)

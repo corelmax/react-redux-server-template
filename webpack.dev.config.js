@@ -38,6 +38,12 @@ const config = {
     }),
     new webpack.optimize.UglifyJsPlugin()
   ],
+  resolve: {
+    alias: {
+      'client': path.resolve(__dirname, 'client'),
+      'server': path.resolve(__dirname, 'server')
+    }
+  }
 };
 
 const serverConfig = {
@@ -78,8 +84,14 @@ const serverConfig = {
     new CopyWebpackPlugin([
       { from: path.join(__dirname, 'server', 'views'), to: path.join(__dirname, 'dist', 'views') }
     ]),
-    new webpack.optimize.UglifyJsPlugin()
-  ]
+    // new webpack.optimize.UglifyJsPlugin()
+  ],
+  resolve: {
+    alias: {
+      'client': path.resolve(__dirname, 'client'),
+      'server': path.resolve(__dirname, 'server')
+    }
+  }
 };
 
 module.exports = [config, serverConfig];
