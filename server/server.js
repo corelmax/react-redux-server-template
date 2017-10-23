@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-app.use('/public', Express.static('public'))
+app.use('/public', Express.static(path.join(__dirname, 'public')))
 app.use((req, res) => {
     const store = createStore(AppReducers)
 

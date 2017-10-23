@@ -77,7 +77,8 @@ const serverConfig = {
   plugins: [
     new CopyWebpackPlugin([
       { from: path.join(__dirname, 'server', 'views'), to: path.join(__dirname, 'dist', 'views') }
-    ])
+    ]),
+    new webpack.optimize.UglifyJsPlugin()
   ]
 };
 
