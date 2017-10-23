@@ -3,6 +3,4 @@ import { Router, Route, Switch, browserHistory } from 'react-router'
 
 import App from '../containers/App'
 
-export default (
-    <Route path="/" component={App} />
-)
+export default (<Route path='/' component={App} />)

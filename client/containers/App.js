@@ -10,20 +10,20 @@ import Test from './Test'
 const cx = classNames.bind(styles)
 
 class App extends Component {
-  render() {
+  render () {
     return (
-      <div className={cx("App")}>
-        <header className={cx("App-header")}>
-          <h1 className={cx("App-title")}>Welcome to React</h1>
+      <div className={cx('App')}>
+        <header className={cx('App-header')}>
+          <h1 className={cx('App-title')}>Welcome to React</h1>
         </header>
         <div className={cx('article-main-container')}>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/test" component={Test} />
-            </Switch>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/test' component={Test} />
+          </Switch>
         </div>
       </div>
-    );
+    )
   }
 }
 
