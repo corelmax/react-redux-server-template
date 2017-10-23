@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Fastwork.co - Mail Sending Test</title>
+        <link type="text/css" rel="stylesheet" href="/public/styles.css" />
+    </head>
+    <body>
+    <div id="root">
+        <%-renderedContent%>
+    </div>
+    <script>
+        window.__INITIAL_STATE__ = <%-JSON.stringify(initialState)%>
+    </script>
+    <script src="/public/client.dist.js"></script>
+    </body>
+</html>
