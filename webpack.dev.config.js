@@ -1,15 +1,16 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const nodeExternals = require('webpack-node-externals');
 
 const config = {
   name: 'client',
   entry: ['./client/client.js'],
   output: {
-    path: path.join(__dirname, 'public/'),
-    filename: 'client.dist.js',
-    publicPath: '/public/'
+    path: path.join(__dirname, 'dist', 'public'),
+    filename: 'client.js',
+    publicPath: path.join(__dirname, 'dist', 'public')
   },
   module: {
     loaders: [
@@ -42,14 +43,18 @@ const config = {
 const serverConfig = {
   name: 'server',
   target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false
+  },
   externals: [nodeExternals()],
   entry: [
-    './server.js'
+    './server/server.js'
   ],
   output: {
-    path: __dirname,
-    filename: 'server.dist.js',
-    publicPath: __dirname,
+    path: path.join(__dirname, 'dist'),
+    filename: 'server.js',
+    publicPath: path.join(__dirname, 'dist'),
     libraryTarget: 'commonjs2'
   },
   module: {
@@ -69,6 +74,11 @@ const serverConfig = {
       }
     ]
   },
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: path.join(__dirname, 'server', 'views'), to: path.join(__dirname, 'dist', 'views') }
+    ])
+  ]
 };
 
 module.exports = [config, serverConfig];

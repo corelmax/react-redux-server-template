@@ -1,4 +1,5 @@
 import path from 'path'
+import fs from 'fs'
 import Express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
@@ -6,13 +7,13 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import Config from './utils/config'
-import AppReducers from './client/reducers'
-import App from './client/containers/App'
+import AppReducers from '../client/reducers'
+import App from '../client/containers/App'
 
 const app = Express()
 const port = process.env.PORT || 3000
-console.log(process.cwd())
-app.set('views', './views')
+
+app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 app.use('/public', Express.static('public'))
